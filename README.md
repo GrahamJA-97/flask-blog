@@ -1,5 +1,9 @@
 # flask-blog
 Simple blog built with the flask framework
+-------
+To start up the local version first start the virtual environment with ```source venv/bin/activate```
+Then once in the virtual environment run ```flask run``` and navigate to the localhost port specified in the output (typically 5000).
+To end simply press ```ctrl + c``` then ```deactivate``` to stop the virtual environment.
 
 ## Important Packages/Aspects of Flask
 
@@ -18,4 +22,11 @@ from flask import render_template
 
 I am using Flask-WTF as it is a simple wrapper around the WTForms package to better integrate it with flask. This is my main way of collecting input from users to add content to my blog.
 
-*Also as a bonus this package protects against CSRF ([Cross-Site Request Forgery](http://en.wikipedia.org/wiki/Cross-site_request_forgery)*
+*Also as a bonus this package protects against CSRF [Cross-Site Request Forgery](http://en.wikipedia.org/wiki/Cross-site_request_forgery)*
+
+### Flask-SQLAlchemy
+> Flask-SQLAlchemy is an extension for Flask that adds support for SQLAlchemy to your application. It aims to simplify using SQLAlchemy with Flask by providing useful defaults and extra helpers that make it easier to accomplish common tasks.
+
+[Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) is a wrapper for SQLAlchemy to make it more flask friendly
+
+<!-- ### SQLite -->
