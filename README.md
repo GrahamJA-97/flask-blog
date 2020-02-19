@@ -34,11 +34,12 @@ For simplicity (and since I am not deploying this anywhere) I decided to go with
 
 ### Flask-Migrate
 > This extension is a Flask wrapper for Alembic, a database migration framework for SQLAlchemy. Working with database migrations adds a bit of work to get a database started, but that is a small price to pay for a robust way to make changes to your database in the future.
-I went with a migration tool because I may want to make changes to the DB structure later and this ensures that it will make my life easier down the line.
+I went with a migration tool because I may want to make changes to the DB structure later and this ensures that it will make my life easier down the line. It is essentially a version control like git, but rather it is for databases specifically.
 
-*From the creator of the package...*
->Let's say that for the next release of your app you have to introduce a change to your models, for example a new table needs to be added. Without migrations you would need to figure out how to change the schema of your database, both in your development machine and then again in your server, and this could be a lot of work.
+### Werkzeug
 
->But with database migration support, after you modify the models in your application you generate a new migration script (flask db migrate), you probably review it to make sure the automatic generation did the right thing, and then apply the changes to your development database (flask db upgrade). You will add the migration script to source control and commit it.
+[Werkzeug](https://palletsprojects.com/p/werkzeug/) package for password hashing to ensure some level of security for my users.
 
->When you are ready to release the new version of the application to your production server, all you need to do is grab the updated version of your application, which will include the new migration script, and run flask db upgrade. Alembic will detect that the production database is not updated to the latest revision of the schema, and run all the new migration scripts that were created after the previous release.
+### Flask-Login
+
+[Flask-Login](https://flask-login.readthedocs.io/en/latest/) is being used so that I can track user states and maintain some level of control of users being logged in vs. out.
