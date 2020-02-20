@@ -43,3 +43,7 @@ I went with a migration tool because I may want to make changes to the DB struct
 ### Flask-Login
 
 [Flask-Login](https://flask-login.readthedocs.io/en/latest/) is being used so that I can track user states and maintain some level of control of users being logged in vs. out.
+
+### File logging
+
+I included support for file logging, this way if errors are encountered during normal running (not in debug mode) they are stored in a file. I decided to go with a max size of 10kb per file and 10 versions of the log at a time.
