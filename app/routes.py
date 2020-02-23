@@ -96,6 +96,6 @@ def edit_profile():
 @app.before_request  # Function is executed before the view function
 def before_request():
     if current_user.is_authenticated:
-        current_user.last_seen = datetime.utcnow()
+        current_user.last_seen = datetime.utcnow() # update the last_seen variable
         # user will already be in the session so no need to re-add, just commit
         db.session.commit()

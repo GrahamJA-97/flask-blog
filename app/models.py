@@ -35,9 +35,21 @@ class User(UserMixin, db.Model):  # Table to hold the user data
 
 class Post(db.Model):  # Table to hold the blog posts written by users
     id = db.Column(db.Integer, primary_key=True)
-    body = db.Column(db.String(140))
+    title = db.Column(db.String(140))
+    subtitle = db.Column(db.String(140))
+    body = db.Column(db.String(1500))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
+
+class Comment(db.Model): # Table to hold comments on posts
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(280))    # Set to be the length of a tweet
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<Comment {}>'.format(self.body)
