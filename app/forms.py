@@ -49,6 +49,9 @@ class EditProfileForm(FlaskForm):  # Form for editing a profile
 
 
 class PostForm(FlaskForm):
-    post = TextAreaField('Say something', validators=[
+    title = TextAreaField('Title', validators=[
                          DataRequired(), Length(min=1, max=140)])
+    subtitle = TextAreaField('Subtitle', validators=[Length(min=0, max=140)]) 
+    body = TextAreaField('Say something', validators=[
+                         DataRequired(), Length(min=1, max=1500)])
     submit = SubmitField('Submit')

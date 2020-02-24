@@ -5,6 +5,7 @@ This is just a simple blog built using the flask framework. The goal of this pro
 To start up the local version first start the virtual environment with ```source venv/bin/activate```
 Then once in the virtual environment run ```flask run``` and navigate to the localhost port specified in the output (typically 5000).
 To end simply press ```ctrl + c``` then ```deactivate``` to stop the virtual environment.
+To run in debug mode ```export FLASK_DEBUG=1```.
 
 ## Important Packages/Aspects of Flask
 
