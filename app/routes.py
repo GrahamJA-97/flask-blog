@@ -10,26 +10,13 @@ from datetime import datetime
 ################### HOME PAGE
 @app.route('/')
 @app.route('/index')
-@login_required
 def index():
-    # posts = [
-    #     {
-    #         'author': {'username': 'John'},
-    #         'body': 'Quadsort is pretty neat!'
-    #     },
-    #     {
-    #         'author': {'username': 'Jane'},
-    #         'body': 'Is quicksort a thing of the past?'
-    #     }
-    # ]
-    # .order_by(Post.timestamp)
-    posts = Post.query.limit(5).all()
+    posts = Post.query.order_by(Post.timestamp.desc()).limit(15).all()
     return render_template('index.html', title='Home Page', posts=posts)
 
 
 ################### LOGIN PAGE
 @app.route('/login', methods=['GET', 'POST'])
-@login_required
 def login():
     # if the user is already logged in go back to index
     if current_user.is_authenticated:
@@ -121,23 +108,24 @@ def new_post():
         db.session.add(post)
         db.session.commit()
         flash("Post ADDED!!")
-        return redirect(url_for('index'))
+        return redirect(url_for('post', post_id=post.id)) # go to new poet when done
     return render_template('new_post.html', title="", form=form)
 
 
 ################### EDIT POST PAGE
-# @app.route('/edit_post/<post_id>', methods=['GET', 'POST'])
-# @login_required
-# def edit_post(post_id):
-#     form = PostForm()
-#     if form.validate_on_submit():
-#         user = User.query.filter_by(username=current_user.username).first_or_404()
-#         post = Post(title=form.title.data, subtitle=form.subtitle.data, body=form.body.data, user_id=user.id)
-#         db.session.add(post)
-#         db.session.commit()
-#         flash("Post ADDED!!")
-#         return redirect(url_for('index'))
-#     return render_template('edit_post.html', title="Edit", form=form)
+@app.route('/edit_post/<post_id>', methods=['GET', 'POST'])
+@login_required
+def edit_post(post_id):
+    form = PostForm()
+    form.fill_form(post_id)
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=current_user.username).first_or_404()
+        post = Post(title=form.title.data, subtitle=form.subtitle.data, body=form.body.data, user_id=user.id)
+        db.session.add(post)
+        db.session.commit()
+        flash("Post Edited!!")
+        return redirect(url_for('index'))
+    return render_template('edit_post.html', title="Edit", form=form)
 
 @app.before_request  # Function is executed before the view function
 def before_request():
