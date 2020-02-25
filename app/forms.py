@@ -1,7 +1,7 @@
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, ValidationError, Email, EqualTo, Length
 from flask_wtf import FlaskForm
-from app.models import User, Post
+from app.models import User, Post, Comment
 
 
 class LoginForm(FlaskForm):  # Form for users to login to the blog
@@ -49,9 +49,8 @@ class EditProfileForm(FlaskForm):  # Form for editing a profile
 
 
 class PostForm(FlaskForm):
-    title = TextAreaField('Title', validators=[
-                         DataRequired(), Length(min=1, max=140)])
-    subtitle = TextAreaField('Subtitle', validators=[Length(min=0, max=140)]) 
+    title = StringField('Title', validators=[DataRequired()])
+    subtitle = StringField('Subtitle')
     body = TextAreaField('Say something', validators=[
                          DataRequired(), Length(min=1, max=1500)])
     submit = SubmitField('Submit')
@@ -59,7 +58,17 @@ class PostForm(FlaskForm):
     # used to fill in a post that is already created
     def fill_form(self, post_id):
         post = Post.query.filter_by(id=post_id).first()
-        title.data = post.title
-        subtitle.data = post.subtitle
-        body.data = post.body
+        self.title.data = post.title
+        self.subtitle.data = post.subtitle
+        self.body.data = post.body
 
+
+class CommentForm(FlaskForm):
+    body = TextAreaField('Say something', validators=[
+                         DataRequired(), Length(min=1, max=1500)])
+    submit = SubmitField('Submit')
+
+    # used to fill in a comment that is already created
+    def fill_form(self, comment_id):
+        post = Comment.query.filter_by(id=comment_id).first()
+        self.body.data = post.body

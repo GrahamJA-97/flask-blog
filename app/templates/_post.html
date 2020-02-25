@@ -1,9 +1,13 @@
 <table>
     <tr valign="top">
-        <td><img src="{{ post.author.avatar(36) }}"></td>
+        <td><img src="{{ post.author.avatar(64) }}"></td>
         <td>
-            <a href="{{ url_for('post', post_id=post.id) }}"><br>{{ post.title }}</a>
-            By: {{ post.author.username }}
+            <a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a><br>
+            By: {{ post.author.username }} <br>
+            {% if current_user.id == post.user_id %}
+            <a href="{{ url_for('edit_post', post_id=post.id) }}">Edit Post</a>
+            {% endif %}
+
         </td>
     </tr>
 </table>

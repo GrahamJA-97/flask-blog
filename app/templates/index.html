@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hello, Welcome to my blog!</h1>
+<div class="jumbotron text-center">
+    <h1 class="display-2">
+    {% if current_user.is_anonymous %}
+    Hello, Welcome to my blog!
+    {% else %}
+    Hello {{ current_user.username }}, Welcome back to my blog!
+    {% endif %}
+</h1>
+</div>
 
 
 {% for post in posts %}

@@ -6,12 +6,14 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-
+from flask_bootstrap import Bootstrap
 
 app = Flask(__name__)
 
 # Importing the configuration settings from the config class file
 app.config.from_object(Config)
+# adding bootstrap to the app
+Bootstrap(app)
 # Setting up the DB
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
