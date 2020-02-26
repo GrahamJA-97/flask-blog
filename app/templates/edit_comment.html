@@ -2,18 +2,10 @@
 {% import 'bootstrap/wtf.html' as wtf %}
 
 {% block app_content %}
-<div class="container text-center">
-    <h1>{{  title  }}</h1>
-    <form class="form form-horizontal" method="post">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.body.label }}<br>
-            {{ form.body(size=32) }} <br>
-            {% for error in form.body.errors %}
-            <span style="color:red;">[{{error}}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+<h1>{{  title  }}</h1>
+<div class="row">
+    <div class="col-md-4">
+        {{ wtf.quick_form(form) }}
+    </div>
 </div>
 {% endblock %}
