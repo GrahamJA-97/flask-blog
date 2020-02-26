@@ -57,3 +57,11 @@ To adjust the database you need three commands...
 ### File logging
 
 I included support for file logging, this way if errors are encountered during normal running (not in debug mode) they are stored in a file. I decided to go with a max size of 10kb per file and 10 versions of the log at a time.
+
+### Flask-Bootstrap
+
+Used to apply bootstrap style formatting to the jinja rendered elements of the website
+
+### Flask-Moment
+
+Used to convert the UTC times stored in the database into the appropriate format for the user viewing the page.
