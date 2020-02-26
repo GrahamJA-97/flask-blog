@@ -112,7 +112,7 @@ def new_post():
                     body=form.body.data, user_id=user.id)
         db.session.add(post)
         db.session.commit()
-        flash("Post ADDED!!")
+        flash('Your new post has been saved.')
         # go to new post when done
         return redirect(url_for('post', post_id=post.id))
     return render_template('edit_post.html', title="New Post", form=form)
@@ -134,7 +134,7 @@ def edit_post(post_id):
         post.body = form.body.data
         post.timestamp = datetime.utcnow()
         db.session.commit()
-        flash("Post Edited!!")
+        flash('Your changes have been saved.')
         return redirect(url_for('post', post_id=post.id))
     elif request.method == 'GET':  # on arrival fill the page values
         form.fill_form(post_id)
@@ -151,7 +151,7 @@ def new_comment(post_id):
         comment = Comment(body=form.body.data, user_id=user.id, post_id=post_id)
         db.session.add(comment)
         db.session.commit()
-        flash("Comment ADDED!!")
+        flash('Your new comment has been saved.')
         # go to new comment when done
         return redirect(url_for('post', post_id=post_id))
     return render_template('edit_comment.html', title="New Comment", form=form)
@@ -170,7 +170,7 @@ def edit_comment(post_id, comment_id):
         comment.body = form.body.data
         comment.timestamp = datetime.utcnow()
         db.session.commit()
-        flash("Comment Edited!!")
+        flash('Your changes have been saved.')
         return redirect(url_for('post', post_id=post_id))
     elif request.method == 'GET':  # on arrival fill the page values
         form.fill_form(comment_id)
