@@ -93,7 +93,7 @@ I included support for file logging, this way if errors are encountered during n
 
 ### Flask-Bootstrap
 
-Used to apply bootstrap style formatting to the jinja rendered elements of the website.
+Used to apply bootstrap style formatting to the jinja rendered elements of the website. Creates an "inheritance" style file that is extended to every other file that has the bootstrap classes.
 *Important to note that this uses bootstrap 3.3, not the new version 4*
 
 ### Flask-Moment

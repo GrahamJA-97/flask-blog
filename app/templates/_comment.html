@@ -4,7 +4,7 @@
         <a href="{{ url_for('user', username=author.username) }}"><img src="{{ author.avatar(38) }}"></a>
     </div>
     <div class="media-body">
-        <h5 class="media-heading"><strong>{{ author.username }}</strong></h5>
+        <h5 class="media-heading"><a href="{{ url_for('user', username=author.username) }}"><strong>{{ author.username }}</strong></a></h5>
         {{ comment.body }}
         <p>
             {% if current_user.id == comment.user_id %}
