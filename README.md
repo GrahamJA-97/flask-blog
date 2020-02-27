@@ -6,7 +6,7 @@ This is just a simple blog built using the flask framework. The goal of this pro
 ## Setup for local use
 First is package installation
 ```bash
-$ pip3 install venv
+$ python3 venv venv
 $ source venv/bin/activate
 (venv) $ pip3 install flask
 (venv) $ pip3 install flask-login
