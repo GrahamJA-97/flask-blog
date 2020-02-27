@@ -1,0 +1,26 @@
+Table user as U {
+  id int [pk, increment]
+  username varchar
+  email varchar
+  password_hash varchar
+  about_me varchar
+  last_seen datetime
+}
+
+Table post as P {
+  id int [pk, increment]
+  title varchar
+  subtitle varchar
+  body varchar
+  timestamp datetime
+  user_id int [ref: > U.id]
+}
+
+Table comment as C {
+  id int [pk, increment]
+  body varchar
+  timestamp datetime
+  user_id int [ref: > U.id]
+  post_id int [ref: > P.id]
+}
+
