@@ -122,9 +122,8 @@ def new_post():
 @app.route('/edit_post/<post_id>', methods=['GET', 'POST'])
 @login_required
 def edit_post(post_id):
-    user = User.query.filter_by(username=current_user.username).first_or_404()
     post = Post.query.filter_by(id=post_id).first_or_404()
-    if user.id != post.user_id:  # Check user is allowed to edit post
+    if current_user.id != post.user_id:  # Check user is allowed to edit post
         return redirect(url_for('perm_error'))
 
     form = PostForm()
