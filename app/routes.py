@@ -11,7 +11,7 @@ from datetime import datetime
 @app.route('/')
 @app.route('/index')
 def index():
-    posts = Post.query.order_by(Post.timestamp.desc()).limit(15).all()
+    posts = Post.query.order_by(Post.timestamp.desc()).limit(32).all()
     return render_template('index.html', title='Home Page', posts=posts)
 
 
@@ -95,7 +95,7 @@ def edit_profile():
 @app.route('/post/<post_id>')
 def post(post_id):
     post = Post.query.filter_by(id=post_id).first_or_404()
-    comments = Comment.query.filter_by(post_id=post_id).order_by(Comment.timestamp.desc()).limit(15).all()
+    comments = Comment.query.filter_by(post_id=post_id).order_by(Comment.timestamp).limit(32).all()
 
     return render_template('view_post.html', post=post, comments=comments)
 

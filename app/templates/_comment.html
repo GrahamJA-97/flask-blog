@@ -1,10 +1,16 @@
-<div class="row">
-    <img src="{{ post.author.avatar(36) }}">
-    <p>
+<div class="media">
+    {% with author = comment.author %}
+    <div class="media-left">
+        <a href="{{ url_for('user', username=author.username) }}"><img src="{{ author.avatar(38) }}"></a>
+    </div>
+    <div class="media-body">
+        <h5 class="media-heading"><strong>{{ author.username }}</strong></h5>
         {{ comment.body }}
-    </p>
-    <br>
-    {% if current_user.id == comment.user_id %}
-    <a href="{{ url_for('edit_comment', post_id=post.id, comment_id=comment.id) }}">Edit Comment</a>
-    {% endif %}
+        <p>
+            {% if current_user.id == comment.user_id %}
+            <a href="{{ url_for('edit_comment', post_id=post.id, comment_id=comment.id) }}">Edit Comment</a>
+            {% endif %}
+        </p>
+    </div>
+    {% endwith %}
 </div>

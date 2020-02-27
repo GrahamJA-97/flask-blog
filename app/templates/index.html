@@ -4,9 +4,9 @@
 <div class="jumbotron text-center">
     <h1 class="display-4">
     {% if current_user.is_anonymous %}
-    Hello, Welcome to my blog!
+    Hello, Welcome to Flask-Blog!
     {% else %}
-    Hello {{ current_user.username }}, Welcome back to my blog!
+    Hello {{ current_user.username }}, Welcome back to Flask-Blog!
     {% endif %}
 </h1>
 </div>
