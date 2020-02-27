@@ -2,10 +2,39 @@
 This is just a simple blog built using the flask framework. The goal of this project is for me to practice full-stack integration and learn a new framework in the process.
 
 ---
-To start up the local version first start the virtual environment with ```source venv/bin/activate```
-Then once in the virtual environment run ```flask run``` and navigate to the localhost port specified in the output (typically 5000).
-To end simply press ```ctrl + c``` then ```deactivate``` to stop the virtual environment.
-To run in debug mode ```export FLASK_DEBUG=1```.
+
+## Setup for local use
+First is package installation
+```bash
+$ pip3 install venv
+$ source venv/bin/activate
+(venv) $ pip3 install flask
+(venv) $ pip3 install flask-login
+(venv) $ pip3 install flask-wtf
+(venv) $ pip3 install flask-migrate
+(venv) $ pip3 install flask-bootstrap
+(venv) $ pip3 install flask-moment
+(venv) $ pip3 install Werkzeug
+```
+
+Next all you need to do is run the next command and the app is live, navigate to the indicated port on localhost and you should see the home page!
+```bash
+(venv) $ flask run
+ * Serving Flask app "flask-blog.py"
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+[2020-02-26 22:15:20,484] INFO in __init__: Flask-blog startup
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+```
+
+To run in debug mode simply and re-run the app again
+```bash
+export FLASK_DEBUG=1
+```
+
+---
 
 ## Important Packages/Aspects of Flask
 

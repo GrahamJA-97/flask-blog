@@ -2,4 +2,5 @@ app/__pycache__/
 __pycache__/
 venv/
 app.db
-microblog.log*
+logs/
+Flask-Blog.log*
