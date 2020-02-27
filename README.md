@@ -36,6 +36,10 @@ export FLASK_DEBUG=1
 
 ---
 
+## Database Design
+
+![Here is a diagram of the database structure](./db_diagram.png)
+
 ## Important Packages/Aspects of Flask
 
 ### Jinja2
