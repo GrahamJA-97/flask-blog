@@ -4,3 +4,4 @@ venv/
 app.db
 logs/
 Flask-Blog.log*
+.vscode/
