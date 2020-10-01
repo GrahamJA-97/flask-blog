@@ -1,5 +1,5 @@
 # flask-blog
-This is just a simple blog built using the flask framework. The goal of this project is for me to practice full-stack integration and learn a new framework in the process.
+This is just a simple blog built using the flask framework. The goal of this project is for me to practice full-stack integration and learn a new framework in the process. And Have Fun!
 
 ---
 
